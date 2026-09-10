@@ -7,22 +7,28 @@
 //
 // *** MEASURE YOUR ACTUAL SERVOS AND BEARING WITH CALIPERS AND
 // *** UPDATE THE "MEASURE ME" BLOCK BELOW BEFORE PRINTING.
-// The defaults are typical for a DS3218-style 20kg standard-size
-// digital servo and a 608 skate bearing, but real parts vary by
-// +/-0.5mm between brands - print a single wall or the base plate
-// first and test-fit before committing a full print run.
+// Defaults below are sized for a Deegoo-FPV MG995 (standard MG995/MG996R
+// case footprint, 13kg-cm/6V) and a 608 skate bearing, but real parts
+// vary by +/-0.5mm between brands - print a single wall or the base
+// plate first and test-fit before committing a full print run.
+// shaft_z_offset especially is an estimate (no verified dimensioned
+// drawing was available) - measure yours before trusting it.
 
 $fn = 48;
 
 // ---------------- MEASURE ME ----------------
-servo_body_l    = 40.5;  // servo case length, long axis (shaft end to back)
-servo_body_w    = 20.2;  // servo case width
-servo_body_h    = 38.0;  // servo case height (bottom of case to top, under horn)
-shaft_z_offset  = 32.0;  // height of the output shaft centerline above the
-                          // case bottom - most servos have it near the top,
-                          // not centered. Measure this one carefully.
+servo_body_l    = 40.7;  // servo case length, long axis (shaft end to back)
+servo_body_w    = 19.7;  // servo case width
+servo_body_h    = 42.9;  // servo case height (bottom of case to top, under horn)
+shaft_z_offset  = 38.0;  // height of the output shaft centerline above the
+                          // case bottom - estimated, not from a verified
+                          // drawing. Most servos have it near the top, not
+                          // centered - measure this one carefully.
 
-horn_bcd        = 15.0;  // bolt circle diameter of the round horn's own screw holes
+horn_bcd        = 15.0;  // bolt circle diameter of the round horn's own screw holes.
+                          // MG995 kits usually include a round horn with
+                          // several concentric hole rings - measure the
+                          // ring you plan to use and match its diameter here.
 horn_hole_dia   = 2.4;   // diameter of those holes (for M2/M2.5 self-tap screws)
 horn_hole_count = 4;
 horn_boss_dia   = 9.0;   // clearance for the horn's center hub + screw head
@@ -79,9 +85,11 @@ module tripod_nut_trap() {
 
 // Cut from the bottom face (local z=0) upward: a counterbore for a
 // standard tripod mounting screw's head, then a narrower clearance hole
-// continuing up so the screw's threads reach the camcorder's own
-// threaded socket above. (Unlike tripod_nut_trap, we're not supplying
-// the female thread here - the camcorder already has one.)
+// continuing up so the screw's threads reach a threaded socket above.
+// (Unlike tripod_nut_trap, we're not supplying the female thread here -
+// whatever's on top already has one: a camcorder's own tripod socket,
+// or - for an action cam with no socket of its own, like an Osmo Action -
+// a cheap GoPro-mount-to-1/4"-20 adapter clipped to its quick-release mount.)
 module tripod_screw_counterbore() {
     translate([0,0,-0.01]) cylinder(d = tripod_head_dia, h = tripod_head_recess + 0.01);
     translate([0,0, tripod_head_recess - 0.01]) cylinder(d = tripod_screw_dia, h = 50);
@@ -213,8 +221,9 @@ module idler_wall() {
 
 // ---------------- camera_plate ----------------
 // A cradle: two vertical legs (bolt to the tilt horn / idler bearing
-// along Y) joined by a horizontal deck. The camcorder's own tripod screw
-// threads up into a trapped nut in the deck.
+// along Y) joined by a horizontal deck. A standard tripod mounting screw
+// passes up through the deck's counterbore into whatever's sitting on
+// top - see tripod_screw_counterbore() above.
 module camera_plate() {
     deck_w = leg_w;
     deck_l = axle_span + leg_w;

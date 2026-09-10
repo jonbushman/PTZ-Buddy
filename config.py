@@ -5,8 +5,8 @@ PAN_CHANNEL = 0
 TILT_CHANNEL = 1
 
 # Servo pulse range (microseconds). 500/2500 is a safe wide default for
-# 20kg digital servos (DS3218-style); narrow it if your servos buzz at
-# the extremes instead of stopping cleanly.
+# MG995-style digital servos; narrow it if your servos buzz at the
+# extremes instead of stopping cleanly.
 SERVO_MIN_US = 500
 SERVO_MAX_US = 2500
 

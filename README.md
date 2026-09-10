@@ -1,17 +1,18 @@
 # PTZ Buddy
 
-Raspberry Pi + PCA9685 + two 20kg servos, driven by a Bluetooth gamepad's
-left stick, for a DIY pan/tilt camcorder mount. This covers pan/tilt only
-- the Vixia HF R600/R800 have no LANC port, so zoom/record stay manual (or
-a future IR-blaster hack) rather than motorized.
+Raspberry Pi + PCA9685 + two MG995 servos, driven by a Bluetooth gamepad's
+left stick, for a DIY pan/tilt camera mount (built around a DJI Osmo
+Action 4/5). This covers pan/tilt only - the Osmo Action has no physical
+zoom and is started/stopped from its own buttons or the DJI app, so
+recording control stays manual rather than motorized.
 
 ## Wiring
 
 - **PCA9685** on the Pi's I2C bus (`SDA`/`SCL`, plus 3.3V logic power and
   ground). Enable I2C first: `sudo raspi-config` -> Interface Options -> I2C.
 - **Servo power (V+ on the PCA9685 terminal block)** comes from a separate
-  5-6V, 3A+ supply - NOT the Pi's 5V rail. Two 20kg servos can pull well
-  over 1A each under load; sharing the Pi's supply causes brownouts and
+  5-6V, 3A+ supply - NOT the Pi's 5V rail. Two MG995s can still pull close
+  to 1A each under load; sharing the Pi's supply causes brownouts and
   random reboots. Tie the servo supply's ground to the Pi's ground.
 - Pan servo -> PCA9685 channel 0, tilt servo -> channel 1 (see `config.py`
   if you wire them differently).
@@ -72,8 +73,9 @@ camera rather than trusting the default.
 ## 3D-printed bracket
 
 See `cad/README.md` for the parametric pan/tilt bracket (OpenSCAD source,
-STLs, and assembly instructions) that carries the camcorder on these two
-servos.
+STLs, and assembly instructions) that carries the camera on these two
+servos. The Osmo Action doesn't have its own tripod thread - it mounts via
+a GoPro-style adapter, also covered there.
 
 ## Future ideas
 
