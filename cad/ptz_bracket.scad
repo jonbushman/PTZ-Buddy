@@ -85,11 +85,9 @@ module tripod_nut_trap() {
 
 // Cut from the bottom face (local z=0) upward: a counterbore for a
 // standard tripod mounting screw's head, then a narrower clearance hole
-// continuing up so the screw's threads reach a threaded socket above.
-// (Unlike tripod_nut_trap, we're not supplying the female thread here -
-// whatever's on top already has one: a camcorder's own tripod socket,
-// or - for an action cam with no socket of its own, like an Osmo Action -
-// a cheap GoPro-mount-to-1/4"-20 adapter clipped to its quick-release mount.)
+// continuing up so the screw's threads reach the camcorder's own
+// threaded socket above. (Unlike tripod_nut_trap, we're not supplying
+// the female thread here - the camcorder already has one.)
 module tripod_screw_counterbore() {
     translate([0,0,-0.01]) cylinder(d = tripod_head_dia, h = tripod_head_recess + 0.01);
     translate([0,0, tripod_head_recess - 0.01]) cylinder(d = tripod_screw_dia, h = 50);

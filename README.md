@@ -1,10 +1,10 @@
 # PTZ Buddy
 
 Raspberry Pi + PCA9685 + two MG995 servos, driven by a Bluetooth gamepad's
-left stick, for a DIY pan/tilt camera mount (built around a DJI Osmo
-Action 4/5). This covers pan/tilt only - the Osmo Action has no physical
-zoom and is started/stopped from its own buttons or the DJI app, so
-recording control stays manual rather than motorized.
+left stick, for a DIY pan/tilt camcorder mount (built around a Canon
+Vixia HF R600/R800). This covers pan/tilt only - the Vixia has no LANC
+port, so zoom/record stay manual (or a future IR-blaster hack) rather
+than motorized.
 
 ## Wiring
 
@@ -73,9 +73,8 @@ camera rather than trusting the default.
 ## 3D-printed bracket
 
 See `cad/README.md` for the parametric pan/tilt bracket (OpenSCAD source,
-STLs, and assembly instructions) that carries the camera on these two
-servos. The Osmo Action doesn't have its own tripod thread - it mounts via
-a GoPro-style adapter, also covered there.
+STLs, and assembly instructions) that carries the camcorder on these two
+servos.
 
 ## Future ideas
 

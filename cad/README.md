@@ -41,23 +41,15 @@ openscad -D 'part="tilt_wall"' -o stl/tilt_wall.stl ptz_bracket.scad
   cradles the pan servo (snug pocket + zip-ties over the top), with the
   output shaft poking through a hole partway up, aimed at `camera_plate`.
 - **idler_wall**: a passive support directly opposite the tilt servo. A
-  608 bearing press-fits into its pocket; don't skip this side - a camera
-  cantilevered off the servo shaft alone will sag and wobble over a
-  multi-hour stream (though an Osmo Action is light enough that this
-  mostly guards against play/backlash rather than real sag).
+  608 bearing press-fits into its pocket; don't skip this side - a
+  camcorder cantilevered off the servo shaft alone will sag and wobble
+  over a multi-hour stream.
 - **camera_plate**: the cradle that actually holds the camera. One end
   bolts to a horn on the tilt servo's shaft; the other end bolts to an M8
   bolt that passes through the idler bearing's inner race (the bearing's
   outer race stays pressed into `idler_wall`). The deck has a counterbored
-  hole for a standard tripod mounting screw.
-
-  **An Osmo Action has no tripod thread of its own** - it mounts via DJI's
-  magnetic Quick-Release Adapter Mount, which accepts a standard 3-prong
-  GoPro-style buckle. Rather than 3D-printing that buckle geometry (fiddly
-  to get right without a test print), buy a cheap "GoPro mount to 1/4"-20"
-  tripod adapter (~$5, sold everywhere action cams are). It threads onto
-  the same screw the deck already provides, and the Osmo's Quick-Release
-  Adapter Mount clips onto its GoPro-style buckle.
+  hole for a standard tripod mounting screw, which threads up into the
+  camcorder's own threaded socket.
 
 ## Hardware you'll need per rig
 
@@ -72,16 +64,12 @@ openscad -D 'part="tilt_wall"' -o stl/tilt_wall.stl ptz_bracket.scad
 - A standard tripod quick-release plate (its screw becomes the base
   plate's mounting screw) and a standard 1/4"-20 tripod mounting screw
   for the camera_plate deck
-- A GoPro-mount-to-1/4"-20 tripod adapter, to bridge the camera_plate deck
-  to the Osmo Action's own Quick-Release Adapter Mount (see above)
 
 ## Print settings
 
 - Material: PETG or ASA, not PLA - `tilt_wall`/`idler_wall`/`camera_plate`
   carry a cantilevered load for hours at a time and PLA creeps under
-  sustained stress. An Osmo Action (~150g) is light compared to what this
-  bracket was originally sized for, so there's good structural margin
-  either way, but PETG/ASA still cost nothing extra and remove the risk.
+  sustained stress.
 - Infill: 30-40% for `tilt_wall`, `idler_wall`, `camera_plate`; 20% is
   fine for `base_plate` and `pan_platform`.
 - Orientation: all five parts are already modeled to print flat on the bed
