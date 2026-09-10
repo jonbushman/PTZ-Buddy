@@ -1,0 +1,13 @@
+[Unit]
+Description=PTZ camera rig controller
+After=bluetooth.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/ptz-buddy/ptz_service.py
+WorkingDirectory=/home/pi/ptz-buddy
+Restart=on-failure
+RestartSec=2
+User=pi
+
+[Install]
+WantedBy=multi-user.target
