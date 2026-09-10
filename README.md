@@ -69,6 +69,12 @@ tuned via `config.TILT_COMPENSATION`). The right amount of compensation
 depends on your lens FOV and zoom level, so expect to tune it by eye on
 camera rather than trusting the default.
 
+## 3D-printed bracket
+
+See `cad/README.md` for the parametric pan/tilt bracket (OpenSCAD source,
+STLs, and assembly instructions) that carries the camcorder on these two
+servos.
+
 ## Future ideas
 
 The control loop is intentionally split into small pieces
